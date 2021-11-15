@@ -16,6 +16,8 @@ dependencies:
   firebase_analytics: ^8.3.4
   firebase_crashlytics: ^2.2.4
   fluttertoast: ^8.0.8
+  flutter_localizations:
+    sdk: flutter
   permission_handler: ^8.3.0
   url_launcher: ^6.0.9
   tuple: ^2.0.0
@@ -23,3 +25,7 @@ dependencies:
 dev_dependencies:
   lints: ^1.0.0
   test: ^1.16.0
+
+# Use to generate translations to create CurrentLocalisationDelegate
+flutter:
+  generate: true
