@@ -45,3 +45,9 @@ export 'services/orientation_service_abstract.dart' show OrientationServiceAbstr
 export 'services/permissions_service_abstract.dart' show PermissionsServiceAbstract, PermissionsService;
 export 'services/social_service_abstract.dart' show SocialServiceAbstract, SocialService, SocialType;
 export 'services/toast_service_abstract.dart' show ToastServiceAbstract, ToastService;
+
+/// Widgets
+export 'widgets/bounce_button.dart' show BounceButtonMCI;
+export 'widgets/icon_spinner.dart' show IconSpinner;
+export 'widgets/shimmer_container.dart' show ShimmerContainer;
+export 'widgets/smart_refresher.dart' show SmartRefresherMCI, SmartRefresherMCIHeader, SmartRefresherMCIFooter;

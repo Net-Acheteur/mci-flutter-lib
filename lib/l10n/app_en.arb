@@ -1,3 +1,9 @@
 {
-  "@@locale": "en"
+  "@@locale": "en",
+
+  "smartRefresherDataRefreshed": "Data recovered!",
+  "smartRefresherFailed": "Load Failed, pull to try again!",
+  "smartRefresherNoData": "No more Data",
+  "smartRefresherPullToLoad": "Pull to refresh",
+  "smartRefresherRelease": "Release to load more"
 }
