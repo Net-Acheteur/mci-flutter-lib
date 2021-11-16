@@ -22,6 +22,7 @@ export 'helpers/crypto_helper.dart' show CryptoHelper;
 export 'helpers/google_map_helper.dart' show GoogleMapHelper;
 export 'helpers/wkt_helper.dart' show WKTHelper;
 export 'image_preloader.dart' show loadImage;
+export 'infrastructure/closable_multipart_request.dart' show CloseableMultipartRequest;
 
 /// Infrastructure
 export 'infrastructure/dtos/notification_dto.dart'
