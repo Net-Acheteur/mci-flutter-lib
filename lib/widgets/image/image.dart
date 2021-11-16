@@ -1,0 +1,136 @@
+import 'dart:async';
+import 'dart:math';
+import 'dart:ui' as ui;
+
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:mci_flutter_lib/mci_flutter_lib.dart';
+import 'package:photo_view/photo_view.dart';
+
+class BaseImageMCI extends StatefulWidget {
+  final String? imageUrl;
+  final Widget onLoading;
+  final Widget? onError;
+  final bool canScroll;
+  final Function(bool)? callbackOnLoaded;
+  final BaseCacheManager? baseCacheManager;
+
+  const BaseImageMCI(
+      {Key? key,
+      this.imageUrl,
+      this.onLoading = const CircularProgressIndicator(),
+      this.onError,
+      this.canScroll = false,
+      this.callbackOnLoaded,
+      this.baseCacheManager})
+      : super(key: key);
+
+  factory BaseImageMCI.empty() {
+    return const BaseImageMCI();
+  }
+
+  @override
+  _ImageMCIState createState() => _ImageMCIState();
+}
+
+class _ImageMCIState extends State<BaseImageMCI> {
+  String _downloadedImage = "";
+  late Image _image;
+  late Completer<ui.Image> _completer;
+  ImageStreamListener? _imageStreamListener;
+  final ImageConfiguration _imageConfiguration = const ImageConfiguration();
+
+  void _downloadImage() {
+    if (widget.imageUrl != null && _downloadedImage != _imageUrlWithoutTimestamp(widget.imageUrl.toString())) {
+      if (_imageStreamListener != null) {
+        _image.image.resolve(_imageConfiguration).removeListener(_imageStreamListener!);
+      }
+      _downloadedImage = _imageUrlWithoutTimestamp(widget.imageUrl.toString());
+      _image = Image(image: CachedNetworkImageProvider(_createUrl(), cacheManager: widget.baseCacheManager));
+      _completer = Completer<ui.Image>();
+      _imageStreamListener = ImageStreamListener((ImageInfo info, bool _) {
+        if (!_completer.isCompleted) {
+          if (widget.callbackOnLoaded != null) {
+            widget.callbackOnLoaded!(true);
+          }
+          _completer.complete(info.image);
+        }
+      }, onError: (Object object, _) {
+        if (!_completer.isCompleted) {
+          if (widget.callbackOnLoaded != null) {
+            widget.callbackOnLoaded!(false);
+          }
+          _completer.completeError(object);
+        }
+      });
+      _image.image.resolve(_imageConfiguration).addListener(_imageStreamListener!);
+    }
+  }
+
+  String _createUrl() {
+    String baseUrl = widget.imageUrl ?? "";
+    if (baseUrl.startsWith('//')) {
+      return 'https:$baseUrl';
+    } else {
+      return baseUrl;
+    }
+  }
+
+  String _imageUrlWithoutTimestamp(String imageUrl) {
+    if (imageUrl.isNotEmpty) {
+      List<String> splitImage = imageUrl.split('?');
+      if (splitImage.isNotEmpty) {
+        return splitImage[0];
+      }
+    }
+    return imageUrl;
+  }
+
+  Widget _createEmptyPhoto() {
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        return Container(
+            height: double.infinity,
+            width: double.infinity,
+            color: MCIColors.grayLight,
+            child: Icon(
+              Icons.house_outlined,
+              size: min(constraints.maxHeight, constraints.maxWidth),
+              color: MCIColors.grayDark,
+            ));
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    _downloadImage();
+    return widget.imageUrl != null
+        ? LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
+            return FutureBuilder<ui.Image>(
+              future: _completer.future,
+              builder: (BuildContext context, AsyncSnapshot<ui.Image> snapshot) {
+                if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
+                  if (widget.canScroll) {
+                    return ClipRect(child: PhotoView.customChild(child: Image(image: _image.image)));
+                  } else {
+                    BoxFit toFit = BoxFit.scaleDown;
+                    if (snapshot.data!.height > constraints.maxHeight && snapshot.data!.width > constraints.maxWidth) {
+                      toFit = BoxFit.cover;
+                    } else if (snapshot.data!.height > constraints.maxHeight) {
+                      toFit = BoxFit.contain;
+                    }
+                    return Image(image: _image.image, fit: toFit);
+                  }
+                } else if (snapshot.hasError) {
+                  return widget.onError ?? _createEmptyPhoto();
+                } else {
+                  return widget.onLoading;
+                }
+              },
+            );
+          })
+        : _createEmptyPhoto();
+  }
+}

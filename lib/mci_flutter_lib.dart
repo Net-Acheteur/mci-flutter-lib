@@ -22,9 +22,9 @@ export 'helpers/crypto_helper.dart' show CryptoHelper;
 export 'helpers/google_map_helper.dart' show GoogleMapHelper;
 export 'helpers/wkt_helper.dart' show WKTHelper;
 export 'image_preloader.dart' show loadImage;
-export 'infrastructure/closable_multipart_request.dart' show CloseableMultipartRequest;
 
 /// Infrastructure
+export 'infrastructure/closable_multipart_request.dart' show CloseableMultipartRequest;
 export 'infrastructure/dtos/notification_dto.dart'
     show BaseNotificationDto, NotificationPayloadDto, NotificationPayloadEmptyDto;
 
@@ -49,5 +49,8 @@ export 'services/toast_service_abstract.dart' show ToastServiceAbstract, ToastSe
 /// Widgets
 export 'widgets/bounce_button.dart' show BounceButtonMCI;
 export 'widgets/icon_spinner.dart' show IconSpinner;
+export 'widgets/image/image.dart' show BaseImageMCI;
+export 'widgets/image/image_container.dart' show BaseImageContainerMCI;
+export 'widgets/image/image_empty.dart' show ImageEmpty;
 export 'widgets/shimmer_container.dart' show ShimmerContainer;
 export 'widgets/smart_refresher.dart' show SmartRefresherMCI, SmartRefresherMCIHeader, SmartRefresherMCIFooter;
