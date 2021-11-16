@@ -1,7 +1,7 @@
 part of 'current_localization_delegate_abstract.dart';
 
-class CurrentLocalizationDelegate extends CurrentLocalizationDelegateAbstract {
-  CurrentLocalizationDelegate() {
+class BaseCurrentLocalizationDelegate extends CurrentLocalizationDelegateAbstract {
+  BaseCurrentLocalizationDelegate() {
     currentLocale = Locale(Intl.systemLocale.substring(0, 2));
   }
 

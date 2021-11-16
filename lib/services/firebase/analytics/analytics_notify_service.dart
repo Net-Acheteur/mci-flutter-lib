@@ -1,11 +1,11 @@
 ﻿part of 'analytics_notify_service_abstract.dart';
 
-class AnalyticsNotifyService implements AnalyticsNotifyServiceAbstract {
+class BaseAnalyticsNotifyService implements AnalyticsNotifyServiceAbstract {
   late final AppConfig _appConfig;
   late FirebaseAnalytics _analytics;
   late String environment;
 
-  AnalyticsNotifyService({required AppConfig appConfig}) {
+  BaseAnalyticsNotifyService({required AppConfig appConfig}) {
     _appConfig = appConfig;
     _analytics = FirebaseAnalytics();
     _analytics.setUserProperty(name: 'environment', value: _appConfig.getEnvironment());
