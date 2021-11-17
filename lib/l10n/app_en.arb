@@ -3,7 +3,7 @@
 
   "smartRefresherDataRefreshed": "Data recovered!",
   "smartRefresherFailed": "Load Failed, pull to try again!",
-  "smartRefresherNoData": "No more Data",
+  "smartRefresherNoData": "No more data",
   "smartRefresherPullToLoad": "Pull to refresh",
   "smartRefresherRelease": "Release to load more"
 }

@@ -1,8 +1,8 @@
 ﻿{
   "@@locale": "fr",
 
-  "smartRefresherDataRefreshed": "Données récupérées!",
-  "smartRefresherFailed": "Erreur, tirez pour réessayer!",
+  "smartRefresherDataRefreshed": "Données récupérées !",
+  "smartRefresherFailed": "Erreur, tirez pour réessayer !",
   "smartRefresherNoData": "Pas de données",
   "smartRefresherPullToLoad": "Tirer pour charger",
   "smartRefresherRelease": "Lâcher pour charger"
