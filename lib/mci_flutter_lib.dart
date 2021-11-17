@@ -4,7 +4,7 @@
 library mci_flutter_lib;
 
 /// Config
-export 'config/app_config.dart' show AppConfig;
+export 'config/app_config.dart' show AppConfigAbstract;
 export 'config/mci_colors.dart' show MCIColors;
 
 /// Core
