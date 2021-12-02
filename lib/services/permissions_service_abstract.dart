@@ -8,4 +8,5 @@ abstract class PermissionsServiceAbstract {
   Future<bool> storageAuthorized();
   Future<bool> photosAuthorized();
   Future<bool> cameraAuthorized();
+  Future<bool> notificationsAuthorized();
 }
