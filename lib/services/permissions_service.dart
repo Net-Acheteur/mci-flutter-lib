@@ -25,4 +25,9 @@ class PermissionsService implements PermissionsServiceAbstract {
   cameraAuthorized() async {
     return permissionAuthorized(Permission.camera);
   }
+
+  @override
+  notificationsAuthorized() async {
+    return permissionAuthorized(Permission.notification);
+  }
 }
