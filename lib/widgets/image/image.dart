@@ -65,14 +65,14 @@ class _ImageMCIState extends State<BaseImageMCI> {
             widget.maxMegaOctet != null &&
             OctetHelper.bytesToMegaBytes(imageChunkEvent.expectedTotalBytes!) > widget.maxMegaOctet!) {
           if (_imageStream != null && _imageStreamListener != null) {
-            _image.image.evict();
-            _imageStream!.removeListener(_imageStreamListener!);
             if (!_completer.isCompleted) {
               if (widget.callbackOnLoaded != null) {
                 widget.callbackOnLoaded!(false);
               }
               _completer.completeError('Image too big, download canceled');
             }
+            _imageStream!.removeListener(_imageStreamListener!);
+            _image.image.evict(configuration: _imageConfiguration);
           }
         }
       }, onError: (Object object, _) {
