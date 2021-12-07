@@ -9,6 +9,7 @@ class BaseImageContainerMCI extends StatefulWidget {
   final Widget? onError;
   final bool canScroll;
   final BaseCacheManager? baseCacheManager;
+  final double? maxMegaOctet;
 
   const BaseImageContainerMCI(
       {Key? key,
@@ -17,7 +18,8 @@ class BaseImageContainerMCI extends StatefulWidget {
       this.onLoading = const CircularProgressIndicator(),
       this.onError,
       this.canScroll = false,
-      this.baseCacheManager})
+      this.baseCacheManager,
+      this.maxMegaOctet})
       : super(key: key);
 
   factory BaseImageContainerMCI.empty() {
@@ -51,7 +53,8 @@ class _ImageContainerMCIState extends State<BaseImageContainerMCI> {
             onLoading: widget.onLoading,
             onError: widget.onError,
             canScroll: widget.canScroll,
-            baseCacheManager: widget.baseCacheManager);
+            baseCacheManager: widget.baseCacheManager,
+            maxMegaOctet: widget.maxMegaOctet);
       }
     } else {
       if (widget.imageUrl == null || widget.imageUrl == '') {
@@ -62,7 +65,8 @@ class _ImageContainerMCIState extends State<BaseImageContainerMCI> {
               onLoading: widget.onLoading,
               onError: widget.onError,
               canScroll: widget.canScroll,
-              baseCacheManager: widget.baseCacheManager);
+              baseCacheManager: widget.baseCacheManager,
+              maxMegaOctet: widget.maxMegaOctet);
         } else {
           return BaseImageMCI.empty();
         }
@@ -73,7 +77,8 @@ class _ImageContainerMCIState extends State<BaseImageContainerMCI> {
             onError: widget.imageUrlFallback != null ? widget.onLoading : widget.onError,
             canScroll: widget.canScroll,
             callbackOnLoaded: _onFirstImageLoaded,
-            baseCacheManager: widget.baseCacheManager);
+            baseCacheManager: widget.baseCacheManager,
+            maxMegaOctet: widget.maxMegaOctet);
       }
     }
   }
