@@ -5,6 +5,7 @@ import 'dart:ui' as ui;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:mci_flutter_lib/helpers/octet_helper.dart';
 import 'package:mci_flutter_lib/mci_flutter_lib.dart';
 import 'package:photo_view/photo_view.dart';
 
@@ -15,6 +16,7 @@ class BaseImageMCI extends StatefulWidget {
   final bool canScroll;
   final Function(bool)? callbackOnLoaded;
   final BaseCacheManager? baseCacheManager;
+  final double? maxMegaOctet;
 
   const BaseImageMCI(
       {Key? key,
@@ -23,7 +25,8 @@ class BaseImageMCI extends StatefulWidget {
       this.onError,
       this.canScroll = false,
       this.callbackOnLoaded,
-      this.baseCacheManager})
+      this.baseCacheManager,
+      this.maxMegaOctet})
       : super(key: key);
 
   factory BaseImageMCI.empty() {
@@ -38,6 +41,7 @@ class _ImageMCIState extends State<BaseImageMCI> {
   String _downloadedImage = "";
   late Image _image;
   late Completer<ui.Image> _completer;
+  ImageStream? _imageStream;
   ImageStreamListener? _imageStreamListener;
   final ImageConfiguration _imageConfiguration = const ImageConfiguration();
 
@@ -56,6 +60,21 @@ class _ImageMCIState extends State<BaseImageMCI> {
           }
           _completer.complete(info.image);
         }
+      }, onChunk: (ImageChunkEvent imageChunkEvent) {
+        if (imageChunkEvent.expectedTotalBytes != null &&
+            widget.maxMegaOctet != null &&
+            OctetHelper.bytesToMegaBytes(imageChunkEvent.expectedTotalBytes!) > widget.maxMegaOctet!) {
+          if (_imageStream != null && _imageStreamListener != null) {
+            _image.image.evict();
+            _imageStream!.removeListener(_imageStreamListener!);
+            if (!_completer.isCompleted) {
+              if (widget.callbackOnLoaded != null) {
+                widget.callbackOnLoaded!(false);
+              }
+              _completer.completeError('Image too big, download canceled');
+            }
+          }
+        }
       }, onError: (Object object, _) {
         if (!_completer.isCompleted) {
           if (widget.callbackOnLoaded != null) {
@@ -64,7 +83,7 @@ class _ImageMCIState extends State<BaseImageMCI> {
           _completer.completeError(object);
         }
       });
-      _image.image.resolve(_imageConfiguration).addListener(_imageStreamListener!);
+      _imageStream = _image.image.resolve(_imageConfiguration)..addListener(_imageStreamListener!);
     }
   }
 
