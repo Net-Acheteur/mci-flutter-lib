@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:intl/intl.dart';
+import 'package:intl/intl_standalone.dart';
 
 part 'current_localization_delegate.dart';
 
