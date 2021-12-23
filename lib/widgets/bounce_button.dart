@@ -6,6 +6,7 @@ class BounceButtonMCI extends StatefulWidget {
   final void Function()? onTap;
   final Duration durationAnimation;
   final double sizeDown;
+  final HitTestBehavior? hitTestBehavior;
 
   const BounceButtonMCI(
       {Key? key,
@@ -14,7 +15,8 @@ class BounceButtonMCI extends StatefulWidget {
       this.durationAnimation = const Duration(
         milliseconds: 50,
       ),
-      this.sizeDown = 0.1})
+      this.sizeDown = 0.1,
+      this.hitTestBehavior})
       : super(key: key);
 
   @override
@@ -55,6 +57,7 @@ class _BounceButtonMCIState extends State<BounceButtonMCI> with SingleTickerProv
   @override
   Widget build(BuildContext context) {
     _scale = 1 - _controller.value;
-    return GestureDetector(onTap: _tap, child: Transform.scale(scale: _scale, child: widget.content));
+    return GestureDetector(
+        onTap: _tap, behavior: widget.hitTestBehavior, child: Transform.scale(scale: _scale, child: widget.content));
   }
 }
