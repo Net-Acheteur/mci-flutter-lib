@@ -37,9 +37,11 @@ class _ImageContainerMCIState extends State<BaseImageContainerMCI> {
     if (!loadedWithSuccess && widget.imageUrlFallback != null) {
       if (!usingFallback) {
         WidgetsBinding.instance?.addPostFrameCallback((_) {
-          setState(() {
-            usingFallback = true;
-          });
+          if (mounted) {
+            setState(() {
+              usingFallback = true;
+            });
+          }
         });
       }
     }
