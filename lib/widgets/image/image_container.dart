@@ -36,9 +36,11 @@ class _ImageContainerMCIState extends State<BaseImageContainerMCI> {
   _onFirstImageLoaded(bool loadedWithSuccess) {
     if (!loadedWithSuccess && widget.imageUrlFallback != null) {
       if (!usingFallback) {
-        setState(() {
-          usingFallback = true;
-        });
+        if (mounted) {
+          setState(() {
+            usingFallback = true;
+          });
+        }
       }
     }
   }
