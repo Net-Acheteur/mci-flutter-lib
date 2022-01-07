@@ -36,16 +36,17 @@ class _ImageContainerMCIState extends State<BaseImageContainerMCI> {
   _onFirstImageLoaded(bool loadedWithSuccess) {
     if (!loadedWithSuccess && widget.imageUrlFallback != null) {
       if (!usingFallback) {
-        if (mounted) {
+        WidgetsBinding.instance?.addPostFrameCallback((_) {
           setState(() {
             usingFallback = true;
           });
-        }
+        });
       }
     }
   }
 
-  Widget _createImage() {
+  @override
+  Widget build(BuildContext context) {
     if (usingFallback) {
       if (widget.imageUrlFallback == null || widget.imageUrlFallback == '') {
         return BaseImageMCI.empty();
@@ -83,10 +84,5 @@ class _ImageContainerMCIState extends State<BaseImageContainerMCI> {
             maxMegaOctet: widget.maxMegaOctet);
       }
     }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return _createImage();
   }
 }
