@@ -1,5 +1,4 @@
 ﻿import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mci_flutter_lib/config/app_config.dart';

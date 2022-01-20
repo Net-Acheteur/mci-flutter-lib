@@ -7,7 +7,7 @@ class BaseAnalyticsNotifyService implements AnalyticsNotifyServiceAbstract {
 
   BaseAnalyticsNotifyService({required AppConfigAbstract appConfig}) {
     _appConfig = appConfig;
-    _analytics = FirebaseAnalytics();
+    _analytics = FirebaseAnalytics.instance;
     _analytics.setUserProperty(name: 'environment', value: _appConfig.getEnvironment());
   }
 
@@ -23,7 +23,7 @@ class BaseAnalyticsNotifyService implements AnalyticsNotifyServiceAbstract {
 
   @override
   setUserId(String userId) {
-    _analytics.setUserId(userId);
+    _analytics.setUserId(id: userId);
   }
 
   @override
