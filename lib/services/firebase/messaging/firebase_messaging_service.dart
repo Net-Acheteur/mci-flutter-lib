@@ -35,7 +35,7 @@ class BaseFirebaseMessagingService extends FirebaseMessagingServiceAbstract {
       channel = const AndroidNotificationChannel(
         'default_notification_channel_id',
         'Default Importance Notifications',
-        'This channel is used for notifications.',
+        description: 'This channel is used for notifications.',
         importance: Importance.defaultImportance,
       );
 
@@ -130,8 +130,8 @@ class BaseFirebaseMessagingService extends FirebaseMessagingServiceAbstract {
               translateMessage(notification.titleLocKey, notification.titleLocArgs),
               translateMessage(notification.bodyLocKey, notification.bodyLocArgs),
               NotificationDetails(
-                  android: AndroidNotificationDetails(channel.id, channel.name, channel.description,
-                      color: const Color.fromRGBO(0, 56, 94, 1)),
+                  android: AndroidNotificationDetails(channel.id, channel.name,
+                      channelDescription: channel.description, color: const Color.fromRGBO(0, 56, 94, 1)),
                   iOS: const IOSNotificationDetails()),
               payload: json.encode(message.data));
         }
