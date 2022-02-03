@@ -177,17 +177,17 @@ class SmartRefresherMCIHeader extends StatelessWidget {
         Widget body;
         TextStyle textStyle = TextStyle(color: colorText);
         if (status == RefreshStatus.idle) {
-          body = Text(AppLocalizations.of(context)!.smartRefresherPullToLoad, style: textStyle);
+          body = Text(AppLocalizations.of(context).smartRefresherPullToLoad, style: textStyle);
         } else if (status == RefreshStatus.completed) {
-          body = Text(AppLocalizations.of(context)!.smartRefresherDataRefreshed, style: textStyle);
+          body = Text(AppLocalizations.of(context).smartRefresherDataRefreshed, style: textStyle);
         } else if (status == RefreshStatus.refreshing) {
           body = CircularProgressIndicator(backgroundColor: backgroundSpinner, color: colorSpinner);
         } else if (status == RefreshStatus.failed) {
-          body = Text(AppLocalizations.of(context)!.smartRefresherFailed, style: textStyle);
+          body = Text(AppLocalizations.of(context).smartRefresherFailed, style: textStyle);
         } else if (status == RefreshStatus.canRefresh) {
-          body = Text(AppLocalizations.of(context)!.smartRefresherPullToLoad, style: textStyle);
+          body = Text(AppLocalizations.of(context).smartRefresherPullToLoad, style: textStyle);
         } else {
-          body = Text(AppLocalizations.of(context)!.smartRefresherNoData, style: textStyle);
+          body = Text(AppLocalizations.of(context).smartRefresherNoData, style: textStyle);
         }
 
         if (reversed) {
@@ -215,15 +215,15 @@ class SmartRefresherMCIFooter extends StatelessWidget {
       builder: (BuildContext context, LoadStatus? status) {
         Widget body;
         if (status == LoadStatus.idle) {
-          body = Text(AppLocalizations.of(context)!.smartRefresherPullToLoad);
+          body = Text(AppLocalizations.of(context).smartRefresherPullToLoad);
         } else if (status == LoadStatus.loading) {
           body = const CircularProgressIndicator.adaptive();
         } else if (status == LoadStatus.failed) {
-          body = Text(AppLocalizations.of(context)!.smartRefresherFailed);
+          body = Text(AppLocalizations.of(context).smartRefresherFailed);
         } else if (status == LoadStatus.canLoading) {
-          body = Text(AppLocalizations.of(context)!.smartRefresherPullToLoad);
+          body = Text(AppLocalizations.of(context).smartRefresherPullToLoad);
         } else {
-          body = Text(AppLocalizations.of(context)!.smartRefresherNoData);
+          body = Text(AppLocalizations.of(context).smartRefresherNoData);
         }
 
         if (reversed) {
