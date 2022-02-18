@@ -12,6 +12,7 @@ export 'core/processing_result.dart' show BaseProcessingResult, ProcessingState;
 
 /// Extensions
 export 'extensions/date_time.dart' show DateTimeExtensions;
+export 'extensions/external_link_enum.dart' show ExternalLinkEnumExtensions;
 export 'extensions/iterable.dart' show IterableExtension, SetExtension;
 export 'extensions/latlng.dart' show LatLngExtensions, LatLngListExtensions, LatLngListListExtensions;
 export 'extensions/stream.dart' show StreamExtensions;
@@ -27,14 +28,17 @@ export 'image_preloader.dart' show loadImage;
 export 'infrastructure/closable_multipart_request.dart' show CloseableMultipartRequest;
 export 'infrastructure/dtos/notification_dto.dart'
     show BaseNotificationDto, NotificationPayloadDto, NotificationPayloadEmptyDto;
+export 'infrastructure/external_link_enum.dart' show ExternalLinkEnum;
 
 /// Models
+export 'models/external_link/external_link.dart' show ExternalLinkModel;
+export 'models/external_link/external_link_open_from_hunter.dart' show ExternalLinkOpenFromHunter;
 export 'models/notification.dart' show NotificationModel, NotificationEmpty;
+
+/// Services
 export 'services/connectivity_service_abstract.dart' show ConnectivityServiceAbstract, ConnectivityService;
 export 'services/current_localization_delegate_abstract.dart'
     show CurrentLocalizationDelegateAbstract, BaseCurrentLocalizationDelegate;
-
-/// Services
 export 'services/firebase/analytics/analytics_notify_service_abstract.dart'
     show AnalyticsNotifyServiceAbstract, BaseAnalyticsNotifyService;
 export 'services/firebase/crashlytics/firebase_crashlytics_service_abstract.dart'
