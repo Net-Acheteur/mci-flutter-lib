@@ -39,6 +39,7 @@ export 'models/notification.dart' show NotificationModel, NotificationEmpty;
 export 'services/connectivity_service_abstract.dart' show ConnectivityServiceAbstract, ConnectivityService;
 export 'services/current_localization_delegate_abstract.dart'
     show CurrentLocalizationDelegateAbstract, BaseCurrentLocalizationDelegate;
+export 'services/external_link/external_link_service.dart' show ExternalLinkService;
 export 'services/firebase/analytics/analytics_notify_service_abstract.dart'
     show AnalyticsNotifyServiceAbstract, BaseAnalyticsNotifyService;
 export 'services/firebase/crashlytics/firebase_crashlytics_service_abstract.dart'
