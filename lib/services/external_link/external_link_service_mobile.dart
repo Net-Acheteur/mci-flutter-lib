@@ -6,7 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'external_link_service_abstract.dart';
 
 class ExternalLinkService implements ExternalLinkServiceAbstract {
-  _addAndroidPrefix(String packageName) => 'mci://$packageName';
+  _addPackageUrlPrefix(String packageName) => 'mci://$packageName';
 
   @override
   Future<bool> checkIfAppAvailable(String packageName) async {
@@ -14,10 +14,8 @@ class ExternalLinkService implements ExternalLinkServiceAbstract {
       return false;
     }
 
-    if (Platform.isAndroid) {
-      return await canLaunch(_addAndroidPrefix(packageName));
-    } else if (Platform.isIOS) {
-      // TODO
+    if (Platform.isAndroid || Platform.isIOS) {
+      return await canLaunch(Uri.encodeFull(_addPackageUrlPrefix(packageName)));
     }
     return false;
   }
@@ -34,7 +32,7 @@ class ExternalLinkService implements ExternalLinkServiceAbstract {
       });
     }
 
-    String request = _addAndroidPrefix(packageName);
+    String request = _addPackageUrlPrefix(packageName);
     if (prefix != null && prefix.isNotEmpty) {
       request += '/$prefix';
     }
@@ -42,7 +40,7 @@ class ExternalLinkService implements ExternalLinkServiceAbstract {
       request += '?$paramQuery';
     }
 
-    return await launch(request);
+    return await launch(Uri.encodeFull(request));
   }
 
   @override
