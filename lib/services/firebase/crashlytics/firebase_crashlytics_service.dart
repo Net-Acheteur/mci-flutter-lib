@@ -14,10 +14,6 @@ class FirebaseCrashlyticsService implements FirebaseCrashlyticsServiceAbstract {
   @override
   Future<void> sendError(error, stack, reason) async {
     await FirebaseCrashlytics.instance.recordError(error, stack, reason: reason, fatal: false);
-
-    if (!(await FirebaseCrashlytics.instance.checkForUnsentReports())) {
-      await FirebaseCrashlytics.instance.sendUnsentReports();
-    }
   }
 
   @override
