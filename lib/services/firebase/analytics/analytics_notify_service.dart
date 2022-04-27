@@ -4,6 +4,7 @@ class BaseAnalyticsNotifyService implements AnalyticsNotifyServiceAbstract {
   late final AppConfigAbstract _appConfig;
   late FirebaseAnalytics _analytics;
   late String environment;
+  String _userId = '';
 
   BaseAnalyticsNotifyService({required AppConfigAbstract appConfig}) {
     _appConfig = appConfig;
@@ -24,11 +25,14 @@ class BaseAnalyticsNotifyService implements AnalyticsNotifyServiceAbstract {
   @override
   setUserId(String userId) {
     _analytics.setUserId(id: userId);
+    _userId = userId;
   }
 
   @override
   logEvent(String eventName, {Map<String, Object>? parameters}) {
-    _analytics.logEvent(name: eventName, parameters: parameters);
+    Map<String, Object> parametersToReturn = parameters != null ? Map<String, Object>.from(parameters) : {};
+    parametersToReturn['userId'] = _userId;
+    _analytics.logEvent(name: eventName, parameters: parametersToReturn);
   }
 
   /// Custom events
