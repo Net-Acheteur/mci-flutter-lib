@@ -31,7 +31,7 @@ class BaseAnalyticsNotifyService implements AnalyticsNotifyServiceAbstract {
   @override
   logEvent(String eventName, {Map<String, Object>? parameters}) {
     Map<String, Object> parametersToReturn = parameters != null ? Map<String, Object>.from(parameters) : {};
-    parametersToReturn['user_id'] = _userId;
+    // parametersToReturn['user_id'] = _userId;
     _analytics.logEvent(name: eventName, parameters: parametersToReturn);
   }
 
