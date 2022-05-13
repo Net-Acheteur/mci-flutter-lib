@@ -19,19 +19,19 @@ class SocialService implements SocialServiceAbstract {
       case SocialType.whatsapp:
         if (Platform.isIOS) {
           action = "whatsapp://wa.me/$identifier/?text=${Uri.encodeFull(message)}}";
-          if (!await canLaunch(action)) {
+          if (!await canLaunchUrl(Uri.parse(action))) {
             action = "https://apps.apple.com/fr/app/whatsapp-messenger/id310633997";
           }
         } else {
           action = "whatsapp://send?phone=$identifier&text=${Uri.encodeFull(message)}";
-          if (!await canLaunch(action)) {
+          if (!await canLaunchUrl(Uri.parse((action)))) {
             action = "https://play.google.com/store/apps/details?id=com.whatsapp";
           }
         }
         break;
       case SocialType.skype:
         action = "skype:$identifier";
-        if (!await canLaunch(action)) {
+        if (!await canLaunchUrl(Uri.parse(action))) {
           if (Platform.isIOS) {
             action = "https://apps.apple.com/fr/app/skype-pour-iphone/id304878510";
           } else {
@@ -41,8 +41,8 @@ class SocialService implements SocialServiceAbstract {
         break;
     }
 
-    if (action != "" && await canLaunch(action)) {
-      await launch(action);
+    if (action != "" && await canLaunchUrl(Uri.parse(action))) {
+      await launchUrl(Uri.parse(action));
       return true;
     }
 

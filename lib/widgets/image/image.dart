@@ -34,10 +34,10 @@ class BaseImageMCI extends StatefulWidget {
   }
 
   @override
-  _ImageMCIState createState() => _ImageMCIState();
+  ImageMCIState createState() => ImageMCIState();
 }
 
-class _ImageMCIState extends State<BaseImageMCI> {
+class ImageMCIState extends State<BaseImageMCI> {
   String _downloadedImage = "";
   late Image _image;
   late Completer<ui.Image> _completer;

@@ -101,10 +101,10 @@ class SmartRefresherMCI extends StatefulWidget {
   }
 
   @override
-  _SmartRefresherMCIState createState() => _SmartRefresherMCIState();
+  SmartRefresherMCIState createState() => SmartRefresherMCIState();
 }
 
-class _SmartRefresherMCIState extends State<SmartRefresherMCI> {
+class SmartRefresherMCIState extends State<SmartRefresherMCI> {
   late final RefreshController _refreshController;
 
   @override
