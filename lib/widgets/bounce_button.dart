@@ -20,10 +20,10 @@ class BounceButtonMCI extends StatefulWidget {
       : super(key: key);
 
   @override
-  BounceButtonMCIState createState() => BounceButtonMCIState();
+  State<BounceButtonMCI> createState() => _BounceButtonMCIState();
 }
 
-class BounceButtonMCIState extends State<BounceButtonMCI> with SingleTickerProviderStateMixin {
+class _BounceButtonMCIState extends State<BounceButtonMCI> with SingleTickerProviderStateMixin {
   late double _scale;
   late AnimationController _controller;
 

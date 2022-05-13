@@ -27,10 +27,10 @@ class BaseImageContainerMCI extends StatefulWidget {
   }
 
   @override
-  ImageContainerMCIState createState() => ImageContainerMCIState();
+  State<BaseImageContainerMCI> createState() => _ImageContainerMCIState();
 }
 
-class ImageContainerMCIState extends State<BaseImageContainerMCI> {
+class _ImageContainerMCIState extends State<BaseImageContainerMCI> {
   bool usingFallback = false;
 
   _onFirstImageLoaded(bool loadedWithSuccess) {
