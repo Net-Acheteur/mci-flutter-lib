@@ -12,7 +12,7 @@ dependencies:
   cached_network_image: ^3.2.0
   connectivity_plus: ^2.3.0
   collection: ^1.16.0
-  crypto: ^3.0.2
+  crypto: ^3.0.1
   firebase_core: ^1.16.0
   firebase_analytics: ^9.1.7
   firebase_crashlytics: ^2.7.2
