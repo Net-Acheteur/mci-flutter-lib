@@ -27,7 +27,7 @@ class BaseImageContainerMCI extends StatefulWidget {
   }
 
   @override
-  _ImageContainerMCIState createState() => _ImageContainerMCIState();
+  State<BaseImageContainerMCI> createState() => _ImageContainerMCIState();
 }
 
 class _ImageContainerMCIState extends State<BaseImageContainerMCI> {
@@ -36,7 +36,7 @@ class _ImageContainerMCIState extends State<BaseImageContainerMCI> {
   _onFirstImageLoaded(bool loadedWithSuccess) {
     if (!loadedWithSuccess && widget.imageUrlFallback != null) {
       if (!usingFallback) {
-        WidgetsBinding.instance?.addPostFrameCallback((_) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
           if (mounted) {
             setState(() {
               usingFallback = true;

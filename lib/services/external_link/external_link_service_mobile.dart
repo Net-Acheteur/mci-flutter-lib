@@ -15,7 +15,7 @@ class ExternalLinkService implements ExternalLinkServiceAbstract {
     }
 
     if (Platform.isAndroid || Platform.isIOS) {
-      return await canLaunch(Uri.encodeFull(_addPackageUrlPrefix(packageName)));
+      return await canLaunchUrl(Uri.parse(_addPackageUrlPrefix(packageName)));
     }
     return false;
   }
@@ -40,11 +40,11 @@ class ExternalLinkService implements ExternalLinkServiceAbstract {
       request += '?$paramQuery';
     }
 
-    return await launch(Uri.encodeFull(request));
+    return await launchUrl(Uri.parse(request));
   }
 
   @override
   Future<bool> launchStorePage(String packageStoreUrl) async {
-    return await launch(packageStoreUrl);
+    return await launchUrl(Uri.parse(packageStoreUrl));
   }
 }

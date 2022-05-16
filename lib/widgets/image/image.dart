@@ -34,7 +34,7 @@ class BaseImageMCI extends StatefulWidget {
   }
 
   @override
-  _ImageMCIState createState() => _ImageMCIState();
+  State<BaseImageMCI> createState() => _ImageMCIState();
 }
 
 class _ImageMCIState extends State<BaseImageMCI> {

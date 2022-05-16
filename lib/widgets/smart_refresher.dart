@@ -101,7 +101,7 @@ class SmartRefresherMCI extends StatefulWidget {
   }
 
   @override
-  _SmartRefresherMCIState createState() => _SmartRefresherMCIState();
+  State<SmartRefresherMCI> createState() => _SmartRefresherMCIState();
 }
 
 class _SmartRefresherMCIState extends State<SmartRefresherMCI> {
