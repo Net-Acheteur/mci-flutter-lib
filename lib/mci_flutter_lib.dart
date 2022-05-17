@@ -48,6 +48,7 @@ export 'services/firebase/messaging/firebase_messaging_service_abstract.dart'
     show FirebaseMessagingServiceAbstract, BaseFirebaseMessagingService;
 export 'services/orientation_service_abstract.dart' show OrientationServiceAbstract, OrientationService;
 export 'services/permissions_service_abstract.dart' show PermissionsServiceAbstract, PermissionsService;
+export 'services/platform/platform_service.dart' show PlatformService;
 export 'services/social_service_abstract.dart' show SocialServiceAbstract, SocialService, SocialType;
 export 'services/toast_service_abstract.dart' show ToastServiceAbstract, ToastService;
 
