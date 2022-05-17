@@ -11,4 +11,7 @@ class PlatformService implements PlatformServiceAbstract {
 
   @override
   isWeb() => false;
+
+  @override
+  isWebGl2Available() => true;
 }
