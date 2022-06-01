@@ -14,6 +14,7 @@ export 'core/processing_result.dart' show BaseProcessingResult, ProcessingState;
 export 'extensions/date_time.dart' show DateTimeExtensions;
 export 'extensions/external_link_enum.dart' show ExternalLinkEnumExtensions;
 export 'extensions/iterable.dart' show IterableExtension, SetExtension;
+export 'extensions/json.dart' show JsonExtension;
 export 'extensions/latlng.dart' show LatLngExtensions, LatLngListExtensions, LatLngListListExtensions;
 export 'extensions/stream.dart' show StreamExtensions;
 export 'extensions/string.dart' show Capitalization;
