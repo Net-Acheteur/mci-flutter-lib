@@ -54,6 +54,7 @@ export 'services/toast_service_abstract.dart' show ToastServiceAbstract, ToastSe
 
 /// Widgets
 export 'widgets/bounce_button.dart' show BounceButtonMCI;
+export 'widgets/drawer.dart' show DrawerMCI;
 export 'widgets/icon_spinner.dart' show IconSpinner;
 export 'widgets/image/image.dart' show BaseImageMCI;
 export 'widgets/image/image_container.dart' show BaseImageContainerMCI;
