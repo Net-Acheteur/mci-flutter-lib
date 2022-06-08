@@ -22,6 +22,7 @@ export 'extensions/string.dart' show Capitalization;
 /// Helpers
 export 'helpers/crypto_helper.dart' show CryptoHelper;
 export 'helpers/google_map_helper.dart' show GoogleMapHelper;
+export 'helpers/image_helper.dart' show ImageHelper;
 export 'helpers/wkt_helper.dart' show WKTHelper;
 export 'image_preloader.dart' show loadImage;
 
