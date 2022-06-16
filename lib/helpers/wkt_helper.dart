@@ -1,6 +1,10 @@
+import 'package:collection/collection.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class WKTHelper {
+  static const polygonName = 'POLYGON';
+  static const multiPolygonName = 'MULTIPOLYGON';
+
   static List<LatLng> _fromStringValuesToArrayLatLng(List<String> onlyValues) {
     List<LatLng> result = [];
     for (var value in onlyValues) {
@@ -22,10 +26,26 @@ class WKTHelper {
     return [];
   }
 
+  static String convertArrayLatLngToWKT(List<LatLng> listOfLatLng) {
+    if (listOfLatLng.isNotEmpty) {
+      String result = '$polygonName((';
+
+      listOfLatLng.forEachIndexed((index, latLng) {
+        result += '${latLng.longitude} ${latLng.latitude}';
+        if (index < (listOfLatLng.length - 1)) {
+          result += ', ';
+        }
+      });
+      result += '))';
+      return result;
+    }
+    return '';
+  }
+
   static List<List<LatLng>> convertWKTToMultiArrayLatLng(String? wkt) {
     if (wkt != null && wkt.isNotEmpty) {
       try {
-        if (wkt.contains('MULTIPOLYGON')) {
+        if (wkt.contains(multiPolygonName)) {
           List<String> polygons = wkt.split('((')..removeAt(0);
           polygons.first = polygons.first.substring(1);
           polygons.last = polygons.last.split(')))')[0];
@@ -38,7 +58,7 @@ class WKTHelper {
             }
           }
           return result;
-        } else if (wkt.contains('POLYGON')) {
+        } else if (wkt.contains(polygonName)) {
           return List<List<LatLng>>.from([convertWKTToArrayLatLng(wkt)]);
         }
       } catch (_) {
