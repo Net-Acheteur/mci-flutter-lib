@@ -19,7 +19,11 @@ export 'extensions/latlng.dart' show LatLngExtensions, LatLngListExtensions, Lat
 export 'extensions/stream.dart' show StreamExtensions;
 export 'extensions/string.dart' show Capitalization;
 
+/// Generators
+export 'generators/marker_generator.dart' show MarkerGenerator;
+
 /// Helpers
+export 'helpers/cluster_manager_helper.dart' show ClusterManagerHelper;
 export 'helpers/crypto_helper.dart' show CryptoHelper;
 export 'helpers/google_map_helper.dart' show GoogleMapHelper;
 export 'helpers/image_helper.dart' show ImageHelper;
@@ -35,6 +39,11 @@ export 'infrastructure/external_link_enum.dart' show ExternalLinkEnum;
 /// Models
 export 'models/external_link/external_link.dart' show ExternalLinkModel;
 export 'models/external_link/external_link_open_from_hunter.dart' show ExternalLinkOpenFromHunter;
+export 'models/map/map_circle_object.dart' show MapCircleObjectModel;
+export 'models/map/map_cluster_object.dart' show MapClusterElementObjectModel, MapClusterGroupObjectModel;
+export 'models/map/map_object.dart' show MapObjectModel, MapObjectModelWithBounds;
+export 'models/map/map_polygon_object.dart' show MapPolygonObjectModel;
+export 'models/map/place_style.dart' show PlaceStyle;
 export 'models/notification.dart' show NotificationModel, NotificationEmpty;
 
 /// Services
@@ -53,10 +62,12 @@ export 'services/permissions_service_abstract.dart' show PermissionsServiceAbstr
 export 'services/platform/platform_service.dart' show PlatformService;
 export 'services/social_service_abstract.dart' show SocialServiceAbstract, SocialService, SocialType;
 export 'services/toast_service_abstract.dart' show ToastServiceAbstract, ToastService;
-
-/// Widgets
 export 'widgets/bounce_button.dart' show BounceButtonMCI;
 export 'widgets/drawer.dart' show DrawerMCI;
+
+/// Widgets
+export 'widgets/google_map/basic_google_map.dart' show BasicGoogleMap;
+export 'widgets/google_map/google_map.dart' show GoogleMapWidget, GoogleMapWidgetState;
 export 'widgets/icon_spinner.dart' show IconSpinner;
 export 'widgets/image/image.dart' show BaseImageMCI;
 export 'widgets/image/image_container.dart' show BaseImageContainerMCI;
