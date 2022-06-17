@@ -139,6 +139,7 @@ class GoogleMapWidgetState<T extends GoogleMapWidget> extends State<T> with Basi
           markers: markers,
           polygons: polygons,
           circles: circles,
+          polylines: polyLines,
           mapToolbarEnabled: false,
           myLocationEnabled: false,
           myLocationButtonEnabled: false,
