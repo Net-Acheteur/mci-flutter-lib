@@ -33,7 +33,7 @@ class WKTHelper {
       listOfLatLng.forEachIndexed((index, latLng) {
         result += '${latLng.longitude} ${latLng.latitude}';
         if (index < (listOfLatLng.length - 1)) {
-          result += ', ';
+          result += ',';
         }
       });
       result += '))';
