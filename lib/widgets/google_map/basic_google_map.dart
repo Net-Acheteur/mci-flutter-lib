@@ -35,6 +35,7 @@ mixin BasicGoogleMap<T extends StatefulWidget> on State<T> {
   late Set<Marker> markers;
   late Set<Polygon> polygons;
   late Set<Circle> circles;
+  late Set<Polyline> polyLines;
 
   /// Markers used to center/zoom on the map
   Iterable<MapObjectModel> getFocusMarkers() {
@@ -54,6 +55,7 @@ mixin BasicGoogleMap<T extends StatefulWidget> on State<T> {
     markers = <Marker>{};
     polygons = <Polygon>{};
     circles = <Circle>{};
+    polyLines = <Polyline>{};
     mapCtrl = Completer();
   }
 
