@@ -27,6 +27,9 @@ abstract class GoogleMapWidget extends StatefulWidget {
   /// Does the camera must recenter/resize on focusMarkers when the markers change
   final bool animateCameraWhenMarkersChanged;
 
+  /// Can use the google map zoom controls
+  final bool zoomControlsEnabled;
+
   const GoogleMapWidget({
     Key? key,
     required this.markers,
@@ -34,6 +37,7 @@ abstract class GoogleMapWidget extends StatefulWidget {
     this.widgets = const [],
     this.mapStyle,
     this.animateCameraWhenMarkersChanged = true,
+    this.zoomControlsEnabled = false,
   }) : super(key: key);
 
   @override
@@ -143,7 +147,7 @@ class GoogleMapWidgetState<T extends GoogleMapWidget> extends State<T> with Basi
           mapToolbarEnabled: false,
           myLocationEnabled: false,
           myLocationButtonEnabled: false,
-          zoomControlsEnabled: false,
+          zoomControlsEnabled: widget.zoomControlsEnabled,
         ),
         Padding(
           padding: const EdgeInsets.only(bottom: 10),
