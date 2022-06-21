@@ -124,6 +124,9 @@ class GoogleMapWidgetState<T extends GoogleMapWidget> extends State<T> with Basi
   @override
   Widget build(BuildContext context) {
     List<Widget> stackedWidgets = createMapManagementButtons();
+    if (widget.zoomControlsEnabled) {
+      stackedWidgets.addAll(createMapZoomButtons());
+    }
     if (widget.widgets.isNotEmpty) {
       stackedWidgets.addAll(widget.widgets);
     }
@@ -147,7 +150,7 @@ class GoogleMapWidgetState<T extends GoogleMapWidget> extends State<T> with Basi
           mapToolbarEnabled: false,
           myLocationEnabled: false,
           myLocationButtonEnabled: false,
-          zoomControlsEnabled: widget.zoomControlsEnabled,
+          zoomControlsEnabled: false,
         ),
         Padding(
           padding: const EdgeInsets.only(bottom: 10),

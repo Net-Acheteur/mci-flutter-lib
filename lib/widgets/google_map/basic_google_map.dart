@@ -169,4 +169,49 @@ mixin BasicGoogleMap<T extends StatefulWidget> on State<T> {
       ),
     ];
   }
+
+  /// Create the buttons to zoom
+  List<Widget> createMapZoomButtons() {
+    return [
+      Positioned(
+        bottom: 0,
+        right: 0,
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              BounceButtonMCI(
+                onTap: () async {
+                  (await mapCtrl.future).animateCamera(CameraUpdate.zoomIn());
+                },
+                content: Container(
+                  width: 48,
+                  height: 48,
+                  color: Colors.white,
+                  child: const Icon(Icons.add, color: MCIColors.grayDark),
+                ),
+              ),
+              Container(
+                width: 48,
+                height: 1,
+                color: MCIColors.grayDark,
+              ),
+              BounceButtonMCI(
+                onTap: () async {
+                  (await mapCtrl.future).animateCamera(CameraUpdate.zoomOut());
+                },
+                content: Container(
+                  width: 48,
+                  height: 48,
+                  color: Colors.white,
+                  child: const Icon(Icons.remove, color: MCIColors.grayDark),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ];
+  }
 }
