@@ -57,4 +57,15 @@ class GoogleMapHelper {
     }
     return LatLngBounds(southwest: LatLng(minLat, minLng), northeast: LatLng(maxLat, maxLng));
   }
+
+  Future<LatLng> calculatePointFromGesture(double x, double y, GoogleMapController mapCtrl, bool isAndroid) async {
+    if (isAndroid) {
+      // HACK: on Android it's times 3
+      x *= 3;
+      y *= 3;
+    }
+    ScreenCoordinate screenCoordinate = ScreenCoordinate(x: x.round(), y: y.round());
+    LatLng latLng = await mapCtrl.getLatLng(screenCoordinate);
+    return latLng;
+  }
 }
