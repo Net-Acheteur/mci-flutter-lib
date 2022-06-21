@@ -58,7 +58,8 @@ class GoogleMapHelper {
     return LatLngBounds(southwest: LatLng(minLat, minLng), northeast: LatLng(maxLat, maxLng));
   }
 
-  Future<LatLng> calculatePointFromGesture(double x, double y, GoogleMapController mapCtrl, bool isAndroid) async {
+  static Future<LatLng> calculatePointFromGesture(
+      double x, double y, GoogleMapController mapCtrl, bool isAndroid) async {
     if (isAndroid) {
       // HACK: on Android it's times 3
       x *= 3;
