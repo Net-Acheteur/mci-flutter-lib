@@ -74,12 +74,12 @@ mixin BasicGoogleMap<T extends StatefulWidget> on State<T> {
   }
 
   /// Update camera data to display the focusMarkers inside the view
-  Future<void> updateCamera() async {
-    Iterable<MapObjectModel> focusMarkers = getFocusMarkers();
+  Future<void> updateCamera({Iterable<MapObjectModel>? specificFocusMarkers}) async {
+    Iterable<MapObjectModel> focusMarkers = specificFocusMarkers ?? getFocusMarkers();
 
     var newWidgetFocusMarkersHashCode = focusMarkers.toHashCode();
 
-    if (widgetFocusMarkersHashCode == newWidgetFocusMarkersHashCode) {
+    if (widgetFocusMarkersHashCode == newWidgetFocusMarkersHashCode && specificFocusMarkers == null) {
       return;
     }
 
