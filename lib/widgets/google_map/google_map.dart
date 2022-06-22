@@ -30,6 +30,9 @@ abstract class GoogleMapWidget extends StatefulWidget {
   /// Can use the google map zoom controls
   final bool zoomControlsEnabled;
 
+  /// Blocks zoom
+  final MinMaxZoomPreference minMaxZoomPreference;
+
   const GoogleMapWidget({
     Key? key,
     required this.markers,
@@ -38,6 +41,7 @@ abstract class GoogleMapWidget extends StatefulWidget {
     this.mapStyle,
     this.animateCameraWhenMarkersChanged = true,
     this.zoomControlsEnabled = false,
+    this.minMaxZoomPreference = MinMaxZoomPreference.unbounded,
   }) : super(key: key);
 
   @override
@@ -151,6 +155,7 @@ class GoogleMapWidgetState<T extends GoogleMapWidget> extends State<T> with Basi
           myLocationEnabled: false,
           myLocationButtonEnabled: false,
           zoomControlsEnabled: false,
+          minMaxZoomPreference: widget.minMaxZoomPreference,
         ),
         Padding(
           padding: const EdgeInsets.only(bottom: 10),

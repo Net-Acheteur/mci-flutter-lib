@@ -181,25 +181,28 @@ class MarkerGenerator {
         infoWindow: markerInfoWindow);
   }
 
-  Future<Marker> createPinPointMarker(String id, LatLng position, Function() callback) async {
+  Future<Marker> createPinPointMarker(String id, LatLng position, Function() callback,
+      {Offset anchor = const Offset(0.5, 1.0)}) async {
     BitmapDescriptor markerContent = await createBitmapDescriptorFromIconData(Icons.place, MCIColors.secondary);
-    return createMarker(id, position, markerContent, callback: callback);
+    return createMarker(id, position, markerContent, callback: callback, anchor: anchor);
   }
 
-  Future<Marker> createRoundMultiPinPointMarker(String id, int number, LatLng position, Function() callback) async {
+  Future<Marker> createRoundMultiPinPointMarker(String id, int number, LatLng position, Function() callback,
+      {Offset anchor = const Offset(0.5, 0.5)}) async {
     BitmapDescriptor markerContent = await createBitmapDescriptorFromRoundAndCenteredIconDataAndText(
         Icons.circle, MCIColors.secondary, Colors.white, number.toString());
-    return createMarker(id, position, markerContent, callback: callback, anchor: const Offset(0.5, 0.5));
+    return createMarker(id, position, markerContent, callback: callback, anchor: anchor);
   }
 
   Future<Marker> createMultiPinPointMarker(String id, int number, LatLng position,
-      {Function()? callback, Color color = MCIColors.secondary}) async {
+      {Function()? callback, Color color = MCIColors.secondary, Offset anchor = const Offset(0.5, 1.0)}) async {
     BitmapDescriptor markerContent =
         await createBitmapDescriptorFromIconDataAndText(Icons.place, color, Colors.white, number.toString());
-    return createMarker(id, position, markerContent, callback: callback);
+    return createMarker(id, position, markerContent, callback: callback, anchor: anchor);
   }
 
-  Future<Marker> createTextMarker(String id, String text, LatLng position, {Function()? callback}) async {
+  Future<Marker> createTextMarker(String id, String text, LatLng position,
+      {Function()? callback, Offset anchor = const Offset(0.5, 1.0)}) async {
     final BitmapDescriptor desiredMarker = await getBytesFromCanvas(text);
 
     return createMarker(
@@ -207,7 +210,7 @@ class MarkerGenerator {
       position,
       desiredMarker,
       callback: callback,
-      anchor: const Offset(0.5, 0.5),
+      anchor: anchor,
     );
   }
 }
