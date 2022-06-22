@@ -53,12 +53,14 @@ export 'services/current_localization_delegate_abstract.dart'
 export 'services/external_link/external_link_service.dart' show ExternalLinkService;
 export 'services/firebase/analytics/analytics_notify_service_abstract.dart'
     show AnalyticsNotifyServiceAbstract, BaseAnalyticsNotifyService;
+export 'services/firebase/crashlytics/firebase_crashlytics_service.dart' show FirebaseCrashlyticsService;
 export 'services/firebase/crashlytics/firebase_crashlytics_service_abstract.dart'
-    show FirebaseCrashlyticsServiceAbstract, FirebaseCrashlyticsService;
+    show FirebaseCrashlyticsServiceAbstract;
 export 'services/firebase/messaging/firebase_messaging_service_abstract.dart'
     show FirebaseMessagingServiceAbstract, BaseFirebaseMessagingService;
 export 'services/orientation_service_abstract.dart' show OrientationServiceAbstract, OrientationService;
-export 'services/permissions_service_abstract.dart' show PermissionsServiceAbstract, PermissionsService;
+export 'services/permissions/permissions_service.dart' show PermissionsService;
+export 'services/permissions/permissions_service_abstract.dart' show PermissionsServiceAbstract;
 export 'services/platform/platform_service.dart' show PlatformService;
 export 'services/social_service_abstract.dart' show SocialServiceAbstract, SocialService, SocialType;
 export 'services/toast_service_abstract.dart' show ToastServiceAbstract, ToastService;
