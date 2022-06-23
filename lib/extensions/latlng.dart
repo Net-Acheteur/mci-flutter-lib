@@ -88,12 +88,4 @@ extension LatLngExtensions on LatLng {
   String toXrmString() {
     return '$latitude,$longitude';
   }
-
-  double distanceFromLatLng(LatLng other) {
-    double p = 0.017453292519943295;
-    double a = 0.5 -
-        cos((other.latitude - latitude) * p) / 2 +
-        cos(latitude * p) * cos(other.latitude * p) * (1 - cos((other.longitude - longitude) * p)) / 2;
-    return 12742 * asin(sqrt(a));
-  }
 }

@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:maps_toolkit/maps_toolkit.dart' as map_toolkit;
 import 'package:mci_flutter_lib/config/mci_colors.dart';
 
 class GoogleMapHelper {
@@ -68,5 +69,10 @@ class GoogleMapHelper {
     ScreenCoordinate screenCoordinate = ScreenCoordinate(x: x.round(), y: y.round());
     LatLng latLng = await mapCtrl.getLatLng(screenCoordinate);
     return latLng;
+  }
+
+  static bool isPointInsidePolygon(Polygon polygon, LatLng point) {
+    return map_toolkit.PolygonUtil.containsLocation(map_toolkit.LatLng(point.latitude, point.longitude),
+        polygon.points.map((e) => map_toolkit.LatLng(e.latitude, e.longitude)).toList(), true);
   }
 }
