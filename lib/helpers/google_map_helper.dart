@@ -71,6 +71,12 @@ class GoogleMapHelper {
     return latLng;
   }
 
+  static Future<ScreenCoordinate> calculateScreenCoordinateFromPoint(
+      LatLng point, GoogleMapController mapCtrl, bool isAndroid) async {
+    ScreenCoordinate screenCoordinate = await mapCtrl.getScreenCoordinate(point);
+    return ScreenCoordinate(x: screenCoordinate.x ~/ (isAndroid ? 3 : 1), y: screenCoordinate.y ~/ (isAndroid ? 3 : 1));
+  }
+
   static bool isPointInsidePolygon(Polygon polygon, LatLng point) {
     return map_toolkit.PolygonUtil.containsLocation(map_toolkit.LatLng(point.latitude, point.longitude),
         polygon.points.map((e) => map_toolkit.LatLng(e.latitude, e.longitude)).toList(), true);
