@@ -125,6 +125,9 @@ class GoogleMapWidgetState<T extends GoogleMapWidget> extends State<T> with Basi
         infoWindow: infoWindow);
   }
 
+  @protected
+  onTap(LatLng? latLng) {}
+
   @override
   Widget build(BuildContext context) {
     List<Widget> stackedWidgets = createMapManagementButtons();
@@ -138,6 +141,7 @@ class GoogleMapWidgetState<T extends GoogleMapWidget> extends State<T> with Basi
       body: Stack(children: [
         GoogleMap(
           onTap: (_) {
+            onTap(_);
             widget.onTapMarker([]);
           },
           mapType: currentMapType,
