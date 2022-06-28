@@ -44,6 +44,7 @@ export 'models/map/map_cluster_object.dart' show MapClusterElementObjectModel, M
 export 'models/map/map_object.dart' show MapObjectModel, MapObjectModelWithBounds;
 export 'models/map/map_polygon_object.dart' show MapPolygonObjectModel;
 export 'models/map/place_style.dart' show PlaceStyle;
+export 'models/map/polygon_model.dart' show PolygonModel;
 export 'models/notification.dart' show NotificationModel, NotificationEmpty;
 
 /// Services
