@@ -16,6 +16,7 @@ export 'extensions/external_link_enum.dart' show ExternalLinkEnumExtensions;
 export 'extensions/iterable.dart' show IterableExtension, SetExtension;
 export 'extensions/json.dart' show JsonExtension;
 export 'extensions/latlng.dart' show LatLngExtensions, LatLngListExtensions, LatLngListListExtensions;
+export 'extensions/polygon_model.dart' show PolygonModelExtension, PolygonModelListExtension;
 export 'extensions/stream.dart' show StreamExtensions;
 export 'extensions/string.dart' show Capitalization;
 

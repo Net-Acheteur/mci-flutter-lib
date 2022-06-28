@@ -6,10 +6,11 @@ import 'package:maps_toolkit/maps_toolkit.dart' as map_toolkit;
 import 'package:mci_flutter_lib/config/mci_colors.dart';
 
 class GoogleMapHelper {
-  static Polygon createPolygon(String id, List<LatLng> coordinates) {
+  static Polygon createPolygon(String id, List<LatLng> coordinates, [List<List<LatLng>> holes = const []]) {
     return Polygon(
         polygonId: PolygonId(id),
         points: coordinates,
+        holes: holes,
         strokeWidth: 2,
         strokeColor: MCIColors.secondary,
         fillColor: Colors.grey.withOpacity(0.3));
