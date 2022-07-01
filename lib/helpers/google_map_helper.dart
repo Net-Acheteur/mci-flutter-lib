@@ -2,13 +2,15 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:maps_toolkit/maps_toolkit.dart' as map_toolkit;
 import 'package:mci_flutter_lib/config/mci_colors.dart';
 
 class GoogleMapHelper {
-  static Polygon createPolygon(String id, List<LatLng> coordinates) {
+  static Polygon createPolygon(String id, List<LatLng> coordinates, [List<List<LatLng>> holes = const []]) {
     return Polygon(
         polygonId: PolygonId(id),
         points: coordinates,
+        holes: holes,
         strokeWidth: 2,
         strokeColor: MCIColors.secondary,
         fillColor: Colors.grey.withOpacity(0.3));
@@ -56,5 +58,28 @@ class GoogleMapHelper {
       maxLng = 180;
     }
     return LatLngBounds(southwest: LatLng(minLat, minLng), northeast: LatLng(maxLat, maxLng));
+  }
+
+  static Future<LatLng> calculatePointFromGesture(
+      double x, double y, GoogleMapController mapCtrl, bool isAndroid) async {
+    if (isAndroid) {
+      // HACK: on Android it's times 3
+      x *= 3;
+      y *= 3;
+    }
+    ScreenCoordinate screenCoordinate = ScreenCoordinate(x: x.round(), y: y.round());
+    LatLng latLng = await mapCtrl.getLatLng(screenCoordinate);
+    return latLng;
+  }
+
+  static Future<ScreenCoordinate> calculateScreenCoordinateFromPoint(
+      LatLng point, GoogleMapController mapCtrl, bool isAndroid) async {
+    ScreenCoordinate screenCoordinate = await mapCtrl.getScreenCoordinate(point);
+    return ScreenCoordinate(x: screenCoordinate.x ~/ (isAndroid ? 3 : 1), y: screenCoordinate.y ~/ (isAndroid ? 3 : 1));
+  }
+
+  static bool isPointInsidePolygon(Polygon polygon, LatLng point) {
+    return map_toolkit.PolygonUtil.containsLocation(map_toolkit.LatLng(point.latitude, point.longitude),
+        polygon.points.map((e) => map_toolkit.LatLng(e.latitude, e.longitude)).toList(), true);
   }
 }

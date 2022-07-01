@@ -1,23 +1,4 @@
-part of 'firebase_crashlytics_service_abstract.dart';
-
-class FirebaseCrashlyticsService implements FirebaseCrashlyticsServiceAbstract {
-  FirebaseCrashlyticsService() {
-    init();
-  }
-
-  @override
-  Future<void> init() async {
-    await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
-    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
-  }
-
-  @override
-  Future<void> sendError(error, stack, reason) async {
-    await FirebaseCrashlytics.instance.recordError(error, stack, reason: reason, fatal: false);
-  }
-
-  @override
-  void setUserId(userId) {
-    FirebaseCrashlytics.instance.setUserIdentifier(userId);
-  }
-}
+export 'package:mci_flutter_lib/services/firebase/crashlytics/firebase_crashlytics_service_stub.dart'
+    if (dart.library.io) 'package:mci_flutter_lib/services/firebase/crashlytics/firebase_crashlytics_service_mobile.dart'
+    if (dart.library.html) 'package:mci_flutter_lib/services/firebase/crashlytics/firebase_crashlytics_service_web.dart'
+    show FirebaseCrashlyticsService;

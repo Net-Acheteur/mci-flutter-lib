@@ -1,4 +1,5 @@
-part of 'permissions_service_abstract.dart';
+import 'package:mci_flutter_lib/services/permissions/permissions_service_abstract.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class PermissionsService implements PermissionsServiceAbstract {
   @override
