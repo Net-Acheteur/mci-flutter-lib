@@ -37,6 +37,9 @@ export 'infrastructure/dtos/notification_dto.dart'
     show BaseNotificationDto, NotificationPayloadDto, NotificationPayloadEmptyDto;
 export 'infrastructure/external_link_enum.dart' show ExternalLinkEnum;
 
+/// Mixins
+export 'mixins/cubit.dart' show CubitPreventsEmitOnClosed;
+
 /// Models
 export 'models/external_link/external_link.dart' show ExternalLinkModel;
 export 'models/external_link/external_link_open_from_hunter.dart' show ExternalLinkOpenFromHunter;
