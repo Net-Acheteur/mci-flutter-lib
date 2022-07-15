@@ -38,6 +38,7 @@ export 'infrastructure/dtos/notification_dto.dart'
 export 'infrastructure/external_link_enum.dart' show ExternalLinkEnum;
 
 /// Mixins
+export 'mixins/bloc.dart' show BlocPreventsEmitOrAddOnClosed;
 export 'mixins/cubit.dart' show CubitPreventsEmitOnClosed;
 
 /// Models
