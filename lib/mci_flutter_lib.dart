@@ -82,6 +82,7 @@ export 'widgets/icon_spinner.dart' show IconSpinner;
 export 'widgets/image/image.dart' show BaseImageMCI;
 export 'widgets/image/image_container.dart' show BaseImageContainerMCI;
 export 'widgets/image/image_empty.dart' show ImageEmpty;
+export 'widgets/lifecycle_watcher.dart' show LifecycleWatcherState;
 export 'widgets/modal.dart' show ModalMCI;
 export 'widgets/shimmer_container.dart' show ShimmerContainer;
 export 'widgets/smart_refresher.dart' show SmartRefresherMCI, SmartRefresherMCIHeader, SmartRefresherMCIFooter;
