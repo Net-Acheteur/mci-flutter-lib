@@ -28,6 +28,7 @@ export 'helpers/cluster_manager_helper.dart' show ClusterManagerHelper;
 export 'helpers/crypto_helper.dart' show CryptoHelper;
 export 'helpers/google_map_helper.dart' show GoogleMapHelper;
 export 'helpers/image_helper.dart' show ImageHelper;
+export 'helpers/version_helper.dart' show VersionHelper, VersionComparison;
 export 'helpers/wkt_helper.dart' show WKTHelper;
 export 'image_preloader.dart' show loadImage;
 
@@ -51,6 +52,7 @@ export 'models/map/map_polygon_object.dart' show MapPolygonObjectModel;
 export 'models/map/place_style.dart' show PlaceStyle;
 export 'models/map/polygon_model.dart' show PolygonModel;
 export 'models/notification.dart' show NotificationModel, NotificationEmpty;
+export 'models/version_model.dart' show VersionModel;
 
 /// Services
 export 'services/connectivity_service_abstract.dart' show ConnectivityServiceAbstract, ConnectivityService;
@@ -80,5 +82,7 @@ export 'widgets/icon_spinner.dart' show IconSpinner;
 export 'widgets/image/image.dart' show BaseImageMCI;
 export 'widgets/image/image_container.dart' show BaseImageContainerMCI;
 export 'widgets/image/image_empty.dart' show ImageEmpty;
+export 'widgets/lifecycle_watcher.dart' show LifecycleWatcherState;
+export 'widgets/modal.dart' show ModalMCI;
 export 'widgets/shimmer_container.dart' show ShimmerContainer;
 export 'widgets/smart_refresher.dart' show SmartRefresherMCI, SmartRefresherMCIHeader, SmartRefresherMCIFooter;
