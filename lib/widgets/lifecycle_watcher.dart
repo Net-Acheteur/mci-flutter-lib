@@ -31,8 +31,8 @@ abstract class LifecycleWatcherState<T extends StatefulWidget> extends State<T> 
     }
   }
 
-  void onResumed();
-  void onPaused();
-  void onInactive();
-  void onDetached();
+  void onResumed() {}
+  void onPaused() {}
+  void onInactive() {}
+  void onDetached() {}
 }
