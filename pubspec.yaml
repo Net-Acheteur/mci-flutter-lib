@@ -14,7 +14,7 @@ dependencies:
   cross_file: ^0.3.3
   crypto: ^3.0.1
   equatable: ^2.0.0
-  firebase_analytics: ^9.1.7
+  firebase_analytics: ^9.2.1
   firebase_core: ^1.16.0
   firebase_crashlytics: ^2.7.2
   firebase_messaging: ^11.3.0
