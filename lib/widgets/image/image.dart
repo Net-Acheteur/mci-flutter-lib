@@ -145,6 +145,8 @@ class _ImageMCIState extends State<BaseImageMCI> {
                                 image: _image.image,
                                 height: widget.height ?? _image.height,
                                 width: widget.width ?? _image.width)));
+                  } else if (widget.width != null && widget.height != null) {
+                    return Image(image: _image.image, fit: BoxFit.cover, height: widget.height, width: widget.width);
                   } else {
                     BoxFit toFit = BoxFit.scaleDown;
                     if (snapshot.data!.height > constraints.maxHeight && snapshot.data!.width > constraints.maxWidth) {
