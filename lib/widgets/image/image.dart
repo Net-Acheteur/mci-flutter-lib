@@ -17,6 +17,8 @@ class BaseImageMCI extends StatefulWidget {
   final Function(bool)? callbackOnLoaded;
   final BaseCacheManager? baseCacheManager;
   final double? maxMegaOctet;
+  final double? width;
+  final double? height;
 
   const BaseImageMCI(
       {Key? key,
@@ -26,7 +28,9 @@ class BaseImageMCI extends StatefulWidget {
       this.canScroll = false,
       this.callbackOnLoaded,
       this.baseCacheManager,
-      this.maxMegaOctet})
+      this.maxMegaOctet,
+      this.width,
+      this.height})
       : super(key: key);
 
   factory BaseImageMCI.empty() {
@@ -110,8 +114,8 @@ class _ImageMCIState extends State<BaseImageMCI> {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         return Container(
-            height: double.infinity,
-            width: double.infinity,
+            height: widget.width ?? double.infinity,
+            width: widget.height ?? double.infinity,
             color: MCIColors.grayLight,
             child: Icon(
               Icons.house_outlined,
@@ -132,7 +136,12 @@ class _ImageMCIState extends State<BaseImageMCI> {
               builder: (BuildContext context, AsyncSnapshot<ui.Image> snapshot) {
                 if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
                   if (widget.canScroll) {
-                    return ClipRect(child: PhotoView.customChild(child: Image(image: _image.image)));
+                    return ClipRect(
+                        child: PhotoView.customChild(
+                            child: Image(
+                                image: _image.image,
+                                height: widget.width ?? _image.height,
+                                width: widget.height ?? _image.width)));
                   } else {
                     BoxFit toFit = BoxFit.scaleDown;
                     if (snapshot.data!.height > constraints.maxHeight && snapshot.data!.width > constraints.maxWidth) {

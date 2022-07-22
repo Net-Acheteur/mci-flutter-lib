@@ -10,6 +10,8 @@ class BaseImageContainerMCI extends StatefulWidget {
   final bool canScroll;
   final BaseCacheManager? baseCacheManager;
   final double? maxMegaOctet;
+  final double? width;
+  final double? height;
 
   const BaseImageContainerMCI(
       {Key? key,
@@ -19,7 +21,9 @@ class BaseImageContainerMCI extends StatefulWidget {
       this.onError,
       this.canScroll = false,
       this.baseCacheManager,
-      this.maxMegaOctet})
+      this.maxMegaOctet,
+      this.width,
+      this.height})
       : super(key: key);
 
   factory BaseImageContainerMCI.empty() {
