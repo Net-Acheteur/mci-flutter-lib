@@ -9,6 +9,7 @@ class BaseImageContainerMCI extends StatefulWidget {
   final Widget? onError;
   final bool canScroll;
   final BaseCacheManager? baseCacheManager;
+  final bool useCache;
   final double? maxMegaOctet;
   final double? width;
   final double? height;
@@ -21,6 +22,7 @@ class BaseImageContainerMCI extends StatefulWidget {
       this.onError,
       this.canScroll = false,
       this.baseCacheManager,
+      this.useCache = true,
       this.maxMegaOctet,
       this.width,
       this.height})
@@ -63,6 +65,7 @@ class _ImageContainerMCIState extends State<BaseImageContainerMCI> {
             onError: widget.onError,
             canScroll: widget.canScroll,
             baseCacheManager: widget.baseCacheManager,
+            useCache: widget.useCache,
             maxMegaOctet: widget.maxMegaOctet,
             height: widget.height,
             width: widget.width);
@@ -77,6 +80,7 @@ class _ImageContainerMCIState extends State<BaseImageContainerMCI> {
               onError: widget.onError,
               canScroll: widget.canScroll,
               baseCacheManager: widget.baseCacheManager,
+              useCache: widget.useCache,
               maxMegaOctet: widget.maxMegaOctet,
               height: widget.height,
               width: widget.width);
@@ -91,6 +95,7 @@ class _ImageContainerMCIState extends State<BaseImageContainerMCI> {
             canScroll: widget.canScroll,
             callbackOnLoaded: _onFirstImageLoaded,
             baseCacheManager: widget.baseCacheManager,
+            useCache: widget.useCache,
             maxMegaOctet: widget.maxMegaOctet,
             height: widget.height,
             width: widget.width);

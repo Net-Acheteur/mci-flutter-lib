@@ -16,6 +16,7 @@ class BaseImageMCI extends StatefulWidget {
   final bool canScroll;
   final Function(bool)? callbackOnLoaded;
   final BaseCacheManager? baseCacheManager;
+  final bool useCache;
   final double? maxMegaOctet;
   final double? width;
   final double? height;
@@ -28,6 +29,7 @@ class BaseImageMCI extends StatefulWidget {
       this.canScroll = false,
       this.callbackOnLoaded,
       this.baseCacheManager,
+      this.useCache = true,
       this.maxMegaOctet,
       this.width,
       this.height})
@@ -61,10 +63,17 @@ class _ImageMCIState extends State<BaseImageMCI> {
         _image.image.resolve(_imageConfiguration).removeListener(_imageStreamListener!);
       }
       _downloadedImage = _imageUrlWithoutTimestamp(widget.imageUrl.toString());
-      _image = Image(
-          height: widget.height ?? double.infinity,
-          width: widget.width ?? double.infinity,
-          image: CachedNetworkImageProvider(_createUrl(), cacheManager: widget.baseCacheManager));
+      _image = widget.useCache
+          ? Image(
+              height: widget.height ?? double.infinity,
+              width: widget.width ?? double.infinity,
+              image: CachedNetworkImageProvider(_createUrl(),
+                  cacheManager: widget.baseCacheManager, cacheKey: widget.imageUrl))
+          : Image.network(
+              _createUrl(),
+              height: widget.height ?? double.infinity,
+              width: widget.width ?? double.infinity,
+            );
       _completer = Completer<ui.Image>();
       _imageStreamListener = ImageStreamListener((ImageInfo info, bool _) {
         if (!_completer.isCompleted) {
@@ -102,6 +111,10 @@ class _ImageMCIState extends State<BaseImageMCI> {
 
   String _createUrl() {
     String baseUrl = widget.imageUrl ?? "";
+    if (!widget.useCache) {
+      baseUrl = '$baseUrl?${DateTime.now().microsecond}';
+    }
+
     if (baseUrl.startsWith('//')) {
       return 'https:$baseUrl';
     } else {
