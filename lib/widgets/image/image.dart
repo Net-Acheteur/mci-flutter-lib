@@ -117,8 +117,8 @@ class _ImageMCIState extends State<BaseImageMCI> {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         return Container(
-            height: widget.width ?? double.infinity,
-            width: widget.height ?? double.infinity,
+            height: widget.height ?? double.infinity,
+            width: widget.width ?? double.infinity,
             color: MCIColors.grayLight,
             child: Icon(
               Icons.house_outlined,
@@ -143,8 +143,8 @@ class _ImageMCIState extends State<BaseImageMCI> {
                         child: PhotoView.customChild(
                             child: Image(
                                 image: _image.image,
-                                height: widget.width ?? _image.height,
-                                width: widget.height ?? _image.width)));
+                                height: widget.height ?? _image.height,
+                                width: widget.width ?? _image.width)));
                   } else {
                     BoxFit toFit = BoxFit.scaleDown;
                     if (snapshot.data!.height > constraints.maxHeight && snapshot.data!.width > constraints.maxWidth) {
@@ -155,8 +155,8 @@ class _ImageMCIState extends State<BaseImageMCI> {
                     return Image(
                         image: _image.image,
                         fit: toFit,
-                        height: widget.width ?? _image.height,
-                        width: widget.height ?? _image.width);
+                        height: widget.height ?? _image.height,
+                        width: widget.width ?? _image.width);
                   }
                 } else if (snapshot.hasError) {
                   return widget.onError ?? _createEmptyPhoto();
