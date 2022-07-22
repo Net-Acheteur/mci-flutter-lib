@@ -49,6 +49,12 @@ class _ImageMCIState extends State<BaseImageMCI> {
   ImageStreamListener? _imageStreamListener;
   final ImageConfiguration _imageConfiguration = const ImageConfiguration();
 
+  @override
+  initState() {
+    super.initState();
+    _downloadImage();
+  }
+
   void _downloadImage() {
     if (widget.imageUrl != null && _downloadedImage != _imageUrlWithoutTimestamp(widget.imageUrl.toString())) {
       if (_imageStreamListener != null) {
@@ -131,7 +137,6 @@ class _ImageMCIState extends State<BaseImageMCI> {
 
   @override
   Widget build(BuildContext context) {
-    _downloadImage();
     return widget.imageUrl != null
         ? LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
             return FutureBuilder<ui.Image>(
