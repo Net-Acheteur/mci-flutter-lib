@@ -55,7 +55,10 @@ class _ImageMCIState extends State<BaseImageMCI> {
         _image.image.resolve(_imageConfiguration).removeListener(_imageStreamListener!);
       }
       _downloadedImage = _imageUrlWithoutTimestamp(widget.imageUrl.toString());
-      _image = Image(image: CachedNetworkImageProvider(_createUrl(), cacheManager: widget.baseCacheManager));
+      _image = Image(
+          height: widget.height ?? double.infinity,
+          width: widget.width ?? double.infinity,
+          image: CachedNetworkImageProvider(_createUrl(), cacheManager: widget.baseCacheManager));
       _completer = Completer<ui.Image>();
       _imageStreamListener = ImageStreamListener((ImageInfo info, bool _) {
         if (!_completer.isCompleted) {
@@ -149,7 +152,11 @@ class _ImageMCIState extends State<BaseImageMCI> {
                     } else if (snapshot.data!.height > constraints.maxHeight) {
                       toFit = BoxFit.contain;
                     }
-                    return Image(image: _image.image, fit: toFit);
+                    return Image(
+                        image: _image.image,
+                        fit: toFit,
+                        height: widget.width ?? _image.height,
+                        width: widget.height ?? _image.width);
                   }
                 } else if (snapshot.hasError) {
                   return widget.onError ?? _createEmptyPhoto();
