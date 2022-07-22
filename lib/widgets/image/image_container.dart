@@ -63,7 +63,9 @@ class _ImageContainerMCIState extends State<BaseImageContainerMCI> {
             onError: widget.onError,
             canScroll: widget.canScroll,
             baseCacheManager: widget.baseCacheManager,
-            maxMegaOctet: widget.maxMegaOctet);
+            maxMegaOctet: widget.maxMegaOctet,
+            height: widget.height,
+            width: widget.width);
       }
     } else {
       if (widget.imageUrl == null || widget.imageUrl == '') {
@@ -75,7 +77,9 @@ class _ImageContainerMCIState extends State<BaseImageContainerMCI> {
               onError: widget.onError,
               canScroll: widget.canScroll,
               baseCacheManager: widget.baseCacheManager,
-              maxMegaOctet: widget.maxMegaOctet);
+              maxMegaOctet: widget.maxMegaOctet,
+              height: widget.height,
+              width: widget.width);
         } else {
           return BaseImageMCI.empty();
         }
@@ -87,7 +91,9 @@ class _ImageContainerMCIState extends State<BaseImageContainerMCI> {
             canScroll: widget.canScroll,
             callbackOnLoaded: _onFirstImageLoaded,
             baseCacheManager: widget.baseCacheManager,
-            maxMegaOctet: widget.maxMegaOctet);
+            maxMegaOctet: widget.maxMegaOctet,
+            height: widget.height,
+            width: widget.width);
       }
     }
   }
