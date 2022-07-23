@@ -24,6 +24,7 @@ export 'extensions/string.dart' show Capitalization;
 export 'generators/marker_generator.dart' show MarkerGenerator;
 
 /// Helpers
+export 'helpers/cache_manager_helper.dart' show CacheManagerHelper;
 export 'helpers/cluster_manager_helper.dart' show ClusterManagerHelper;
 export 'helpers/crypto_helper.dart' show CryptoHelper;
 export 'helpers/google_map_helper.dart' show GoogleMapHelper;
